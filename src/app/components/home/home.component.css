@@ -1,0 +1,43 @@
+.container {
+    display: flex;
+  }
+  
+  .content {
+    flex: 1;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .calendar-card {
+    size: 30;
+    display: inline-block;
+    margin: 20px 0;
+  }
+  
+  .date {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+  }n
+  
+  .event-info p {
+    margin: 5px 0;
+  }
+  .aviso {
+    background-color: #fcfcfc; 
+    color: #0143fa; 
+    padding: 15px; 
+    border-radius: 5px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    font-size: 16px; 
+    font-weight: bold; 
+    text-align: center; 
+    margin-top: 20px; 
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+  
+  .aviso::before {
+    content: "⚠️ ";
+    font-size: 20px;
+  }
+  
+  
