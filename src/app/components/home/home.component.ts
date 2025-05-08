@@ -26,7 +26,7 @@ import { Y } from '@angular/cdk/keycodes';
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
-  dataSelecionada = new Date(2025, 4, 5);  //Angular começa com mês 0 = Janeiro
+  dataSelecionada = new Date(2025, 4, 5);  // Corrigido para maio de 2025 (0-indexado)
   dataInterna: Date | null = null;
   descricao = 'Teste';
   hora = '10h00';
@@ -34,12 +34,11 @@ export class HomeComponent {
   mostrarAviso = false;
 
   constructor(private router: Router) {}
-
-  irParaAdmin() {
+  irParaCadastro() {
     this.router.navigate(['/admin']);
   }
 
-  // Teste Estático
+  // Adicionando eventos para datas específicas
   eventos: Date[] = [
     new Date(2025, 4, 10),  // 10 de maio de 2025
     new Date(2025, 4, 15),  // 15 de maio de 2025
@@ -49,14 +48,16 @@ export class HomeComponent {
   verificarEvento(data: Date) {
     this.dataSelecionada = data;
 
+    // Verifica se a data selecionada está na lista de eventos
     const temEvento = this.eventos.some(evento =>
       evento.toDateString() === data.toDateString()
     );
 
+    // Exibe ou não a mensagem de aviso
     this.mostrarAviso = !temEvento;
     
     setTimeout(() => {
-      this.dataInterna = null;
+      this.dataInterna = null; // permite novo clique no calendário
     });
   }
 }

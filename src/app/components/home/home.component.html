@@ -11,6 +11,7 @@
       </mat-card>
 
       <p class="data">
+        {{ dataSelecionada | date: 'fullDate':'':'America/Sao_Paulo' }}
         <strong>({{ dataSelecionada | date: 'fullDate':'':'pt-BR' }})</strong>
       </p>
       
@@ -26,7 +27,7 @@
         <strong>Local: </strong> {{ Local }}
       </p>
       
-      <button (click)="irParaAdmin()"> Área do Administrador </button>
+      <button (click)="irParaCadastro()"> Área do Administrador </button>
 
     </main>
 </div>     
