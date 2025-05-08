@@ -2,13 +2,11 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { RouterModule } from '@angular/router';
-import { MatDatepicker, MatDatepickerModule } from '@angular/material/datepicker';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatCalendar } from '@angular/material/datepicker';
-import { MAT_DATE_LOCALE } from '@angular/material/core';
-import { Y } from '@angular/cdk/keycodes';
 
 @Component({
   selector: 'app-home',
@@ -18,7 +16,6 @@ import { Y } from '@angular/cdk/keycodes';
     MatDatepickerModule,
     MatCardModule,
     MatIconModule,
-    MatDatepickerModule,
     MatNativeDateModule,
     MatCalendar
   ],

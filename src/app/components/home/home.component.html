@@ -1,7 +1,7 @@
 <div class="container">
     <main class="content">
-      <h1>AGENDA DO GOVERNADORR</h1>
-  
+      <h1>AGENDA DO GOVERNADOR</h1>
+
       <mat-card class="calendar-card">
         <mat-calendar
         [(selected)]="dataSelecionada" 
@@ -11,7 +11,6 @@
       </mat-card>
 
       <p class="data">
-        {{ dataSelecionada | date: 'fullDate':'':'America/Sao_Paulo' }}
         <strong>({{ dataSelecionada | date: 'fullDate':'':'pt-BR' }})</strong>
       </p>
       
