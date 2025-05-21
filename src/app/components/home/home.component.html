@@ -5,7 +5,8 @@
       <mat-card class="calendar-card">
         <mat-calendar
         [(selected)]="dataSelecionada" 
-        (selectedChange)="verificarEvento($event)">
+        (selectedChange)="verificarEvento($event!)"
+        [dateClass]="marcarFinaisDeSemana">
 
         </mat-calendar>
       </mat-card>

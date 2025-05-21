@@ -57,4 +57,11 @@ export class HomeComponent {
       this.dataInterna = null; // permite novo clique no calendário
     });
   }
+    marcarFinaisDeSemana = (date: Date): string => {
+      const diaDaSemana = date.getDay(); // 0 = domingo, 6 = sábado
+        if (diaDaSemana === 0 || diaDaSemana === 6) {
+          return 'fim-de-semana';
+        }
+        return '';
+    };
 }

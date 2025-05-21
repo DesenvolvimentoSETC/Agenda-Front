@@ -1,16 +1,16 @@
-.container {
+::ng-deep .container {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
 }
 
-.content {
+::ng-deep .content {
   padding: 20px;
   text-align: center;
 }
 
-.calendar-card {
+::ng-deep .calendar-card {
   display: inline-block;
   margin: 20px 0;
   padding: 10px;
@@ -18,58 +18,64 @@
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
 }
 
-.mat-calendar {
-  font-family: 'Segoe UI', sans-serif;
+::ng-deep .mat-calendar {
+  font-family: 'Segoe UI', Arial;
   border-radius: 12px;
   overflow: hidden;
 }
 
-.mat-calendar-header {
-  background-color: #1a237e;
+::ng-deep .mat-calendar-header {
+  background-color: #2dd8f7;
   color: white;
   font-weight: bold;
 }
 
-.mat-calendar-table-header th {
+::ng-deep .mat-calendar-table-header th {
   font-weight: bold;
   color: black;
 }
 
-.mat-calendar-table-header th:first-child,
-.mat-calendar-table-header th:last-child {
+::ng-deep .mat-calendar-table-header th:first-child,
+::ng-deep .mat-calendar-table-header th:last-child {
   color: red;
 }
 
-.mat-calendar-body-cell:first-child .mat-calendar-body-cell-content,
-.mat-calendar-body-cell:last-child .mat-calendar-body-cell-content {
-  color: red !important;
+::ng-deep .fim-de-semana .mat-calendar-body-cell-content {
+  color: rgb(250, 1, 1) !important;
+  background-color: rgb(255, 255, 255);
+  border-radius: 50%;
 }
 
-.mat-calendar-body-selected {
-  background-color: #1a237e !important;
+::ng-deep .mat-calendar-body-cell:first-child .mat-calendar-body-cell-content,
+::ng-deep .mat-calendar-body-cell:last-child .mat-calendar-body-cell-content {
+  color: rgb(0, 0, 0) ;
+}
+
+::ng-deep .mat-calendar-body-selected {
+  background-color: #6be2f7 !important;
   color: white !important;
 }
 
-.mat-calendar-body-cell-content:hover {
+::ng-deep .mat-calendar-body-cell-content:hover {
   background-color: #c5cae9;
   border-radius: 50%;
 }
 
-.mat-calendar-body-cell-content {
+::ng-deep .mat-calendar-body-cell-content {
   font-weight: bold;
   padding: 8px;
 }
 
   
-  .date {
+  ::ng-deep .date {
     font-size: 1.2em;
     margin-bottom: 10px;
-  }n
+  }
   
-  .event-info p {
+  ::ng-deep .event-info p {
     margin: 5px 0;
   }
-  .aviso {
+  ::ng-deep .aviso {
     background-color: #fcfcfc; 
     color: #0143fa; 
     padding: 15px; 
@@ -82,7 +88,7 @@
     transition: transform 0.3s ease, opacity 0.3s ease;
   }
   
-  .aviso::before {
+  ::ng-deep .aviso::before {
     content: "⚠️ ";
     font-size: 20px;
   }
