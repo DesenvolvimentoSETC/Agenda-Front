@@ -1,17 +1,18 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { RouterModule } from '@angular/router';
-import { MatDatepickerModule } from '@angular/material/datepicker';
+import { Component, OnInit } from '@angular/core';
+import { Router, RouterModule } from '@angular/router';
+import { MatDatepickerModule, MatCalendar } from '@angular/material/datepicker';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatNativeDateModule } from '@angular/material/core';
-import { MatCalendar } from '@angular/material/datepicker';
+
+import { EventService, Evento } from '../../services/event.service'; 
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterModule,
+  imports: [
+    RouterModule,
     CommonModule,
     MatDatepickerModule,
     MatCardModule,
@@ -20,48 +21,58 @@ import { MatCalendar } from '@angular/material/datepicker';
     MatCalendar
   ],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.css'
+  styleUrls: ['./home.component.css']
 })
-export class HomeComponent {
-  dataSelecionada = new Date(2025, 4, 5);  // Corrigido para maio de 2025 (0-indexado)
+export class HomeComponent implements OnInit {
+  dataSelecionada: Date = new Date();
   dataInterna: Date | null = null;
-  descricao = 'Teste';
-  hora = '10h00';
-  Local = 'Teatro Atheneu';
   mostrarAviso = false;
+  descricao = '';
+  hora = '';
+  Local = '';
+  eventos: Evento[] = [];
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private eventService: EventService) {}
+
+  ngOnInit(): void {
+    this.eventService.listarEventos().subscribe({
+      next: (res) => {
+        this.eventos = res;
+      },
+      error: (err) => {
+        console.error('Erro ao buscar eventos:', err);
+      }
+    });
+  }
+
   irParaCadastro() {
     this.router.navigate(['/admin']);
   }
 
-  // Adicionando eventos para datas específicas
-  eventos: Date[] = [
-    new Date(2025, 4, 10),  // 10 de maio de 2025
-    new Date(2025, 4, 15),  // 15 de maio de 2025
-    new Date(2025, 4, 20)   // 20 de maio de 2025
-  ];
-
   verificarEvento(data: Date) {
     this.dataSelecionada = data;
 
-    // Verifica se a data selecionada está na lista de eventos
-    const temEvento = this.eventos.some(evento =>
-      evento.toDateString() === data.toDateString()
-    );
+    const evento = this.eventos.find(ev => {
+      const evData = new Date(ev.data);
+      return evData.toDateString() === data.toDateString();
+    });
 
-    // Exibe ou não a mensagem de aviso
-    this.mostrarAviso = !temEvento;
-    
+    if (evento) {
+      this.descricao = evento.descricao;
+      this.hora = evento.hora;
+      this.Local = evento.local;
+      this.mostrarAviso = false;
+    } else {
+      this.mostrarAviso = true;
+    }
+
     setTimeout(() => {
-      this.dataInterna = null; // permite novo clique no calendário
+      this.dataInterna = null;
     });
   }
-    marcarFinaisDeSemana = (date: Date): string => {
-      const diaDaSemana = date.getDay(); // 0 = domingo, 6 = sábado
-        if (diaDaSemana === 0 || diaDaSemana === 6) {
-          return 'fim-de-semana';
-        }
-        return '';
-    };
+
+  marcarFinaisDeSemana = (date: Date): string => {
+    const dia = date.getDay();
+    return dia === 0 || dia === 6 ? 'fim-de-semana' : '';
+  };
 }
