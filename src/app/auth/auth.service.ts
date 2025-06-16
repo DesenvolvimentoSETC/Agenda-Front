@@ -22,17 +22,14 @@ export class AuthService {
 
   // Um BehaviorSubject para emitir o status de autenticação (logado/deslogado)
   // Útil para componentes que precisam reagir a mudanças de autenticação
-  private _isLoggedIn = new BehaviorSubject<boolean>(this.hasToken());
+  private _isLoggedIn = new BehaviorSubject<boolean>(this.hasToken()); // <- Esta linha chama hasToken() na inicialização
 
   // Observable público para que outros componentes possam se inscrever no status de login
   isLoggedIn$: Observable<boolean> = this._isLoggedIn.asObservable();
 
   constructor(private http: HttpClient, private router: Router) {
-    // Inicializa o status de login baseado na presença do token no localStorage
+    // A linha abaixo também chama hasToken() após a construção do objeto, garantindo que o _isLoggedIn esteja atualizado.
     this._isLoggedIn.next(this.hasToken());
-  }
-  hasToken(): boolean {
-    throw new Error('Method not implemented.');
   }
 
   /**
@@ -88,9 +85,18 @@ export class AuthService {
    * @returns boolean true se o token existir, false caso contrário.
    */
   estaAutenticado(): boolean {
+    // Chame o método privado hasToken() para a verificação centralizada.
+    return this.hasToken();
+  }
+
+  /**
+   * Método PRIVADO auxiliar para verificar a presença do token JWT no localStorage de forma segura.
+   * Esta é a implementação REAL do método que o erro indicava não estar implementada.
+   *
+   * @returns boolean true se o token existir, false caso contrário.
+   */
+  private hasToken(): boolean { // <- Certifique-se que este método está exatamente assim
     try {
-      // Implementação mais robusta: validação do token (ex: JWT Helper library para decodificar e checar expiração)
-      // Por enquanto, apenas verifica a existência do token no localStorage.
       return !!localStorage.getItem(this.TOKEN_KEY);
     } catch (e) {
       console.error('Erro ao acessar localStorage para verificar token:', e);

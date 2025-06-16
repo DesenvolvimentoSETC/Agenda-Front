@@ -1,33 +1,65 @@
 <div class="container">
-    <main class="content">
-      <h1>AGENDA DO GOVERNADOR</h1>
+  <main class="content">
+    <h1>AGENDA DO GOVERNADOR</h1>
 
-      <mat-card class="calendar-card">
-        <mat-calendar
-        [(selected)]="dataSelecionada" 
+    <button (click)="irParaCadastro()" class="admin-button">
+       <mat-icon>admin_panel_settings</mat-icon> Área do Administrador
+    </button>
+
+    <mat-card class="calendar-card">
+      <mat-calendar
+        [(selected)]="dataSelecionada"
         (selectedChange)="verificarEvento($event!)"
-        [dateClass]="marcarFinaisDeSemana">
+        [dateClass]="marcarFinaisDeSemana"
+      ></mat-calendar>
+    </mat-card>
 
-        </mat-calendar>
-      </mat-card>
+    <p class="data">
+      <strong>({{ dataSelecionada | date: 'fullDate':'':'pt-BR' }})</strong>
+    </p>
 
-      <p class="data">
-        <strong>({{ dataSelecionada | date: 'fullDate':'':'pt-BR' }})</strong>
-      </p>
-      
-      <p *ngIf="mostrarAviso" class="aviso">
-        <strong>Não há eventos para a data selecionada.</strong>
-      </p>
-      
-      <p *ngIf="!mostrarAviso" class="evento">
-        <strong>Descrição Do Evento: </strong> {{ descricao }} <br>
-        <br>
-        <strong>Hora: </strong>{{ hora }} <br>
-        <br>
-        <strong>Local: </strong> {{ Local }}
-      </p>
-      
-      <button (click)="irParaCadastro()"> Área do Administrador </button>
+    <!-- Exibição de Evento na Data Selecionada - Mantido -->
+    <p *ngIf="mostrarAviso" class="aviso">
+      <strong>Não há eventos para a data selecionada.</strong>
+    </p>
 
-    </main>
-</div>     
+    <p *ngIf="!mostrarAviso" class="evento">
+      <strong>Descrição Do Evento: </strong> {{ descricao }} <br />
+      <br />
+      <strong>Hora: </strong>{{ hora }} <br />
+      <br />
+      <strong>Local: </strong> {{ Local }}
+    </p>
+
+    <hr class="separator" /> 
+
+  </main>
+</div>
+<style>
+.admin-button {
+  background-color: #007bff; /* Azul */
+  color: white;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.95em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  position: absolute; /* POSICIONAMENTO ABSOLUTO */
+  top: 20px; /* Distância do topo do content */
+  right: 20px; /* Distância da direita do content */
+  z-index: 10; /* Garante que fique acima de outros elementos se houver sobreposição */
+}
+
+.admin-button:hover {
+  background-color: #0056b3; /* Azul mais escuro no hover */
+  transform: translateY(-2px);
+}
+
+.admin-button mat-icon {
+  margin-right: 20px; /* Espaço entre ícone e texto */
+}
+</style>

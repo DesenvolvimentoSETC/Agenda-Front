@@ -1,19 +1,46 @@
 <div class="login-container">
   <h2>Área Administrativa</h2>
-
-  <form (ngSubmit)="fazerLogin()">
+  <form (ngSubmit)="onLogin()" #loginForm="ngForm">
+    <!-- Campo Usuário -->
     <div class="form-group">
-      <label for="usuario">Usuário</label>
-      <input id="usuario" type="text" [(ngModel)]="usuario" name="usuario" required />
+      <label for="username">Usuário: </label>
+      <input
+        type="text"
+        id="username"
+        name="username"
+        [(ngModel)]="username"
+        required
+        #usernameField="ngModel"
+      />
+      <div *ngIf="usernameField.invalid && usernameField.touched" class="error-message">
+        Usuário é obrigatório.
+      </div>
     </div>
 
+    <!-- Campo Senha -->
     <div class="form-group">
-      <label for="senha">Senha</label>
-      <input id="senha" type="password" [(ngModel)]="senha" name="senha" required />
+      <label for="password">Senha: </label>
+      <input
+        type="password"
+        id="password"
+        name="password"
+        [(ngModel)]="password"
+        required
+        #passwordField="ngModel"
+      />
+      <div *ngIf="passwordField.invalid && passwordField.touched" class="error-message">
+        Senha é obrigatória.
+      </div>
     </div>
 
-    <button type="submit">Entrar</button>
+    <!-- Botão Entrar -->
+    <button type="submit" [disabled]="!loginForm.valid">Entrar</button>
 
-    <p *ngIf="erro" class="erro">{{ erro }}</p>
+    <!-- Mensagem de erro do login (se houver) -->
+    <div *ngIf="loginError" class="login-error-message">
+      {{ loginError }}
+    </div>
   </form>
 </div>
+
+
