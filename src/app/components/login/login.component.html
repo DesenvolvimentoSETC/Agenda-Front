@@ -1,5 +1,22 @@
 <div class="login-container">
   <h2>Área Administrativa</h2>
+      <ul class="breadcrumbs">
+      <li>
+        <a (click)="navigateToHomeInfo()" class="breadcrumb-link home-icon-link">
+          <mat-icon>home</mat-icon>
+        </a>
+      </li>
+      <li>
+        <a (click)="navigateToOrganizationalStructure()" class="breadcrumb-link">
+          Estrutura Organizacional
+        </a>
+      </li>
+      <li>
+        <a (click)="navigateToAgenda()" class="breadcrumb-link">
+          Agenda
+        </a>
+      </li>
+    </ul>
   <form (ngSubmit)="onLogin()" #loginForm="ngForm">
     <!-- Campo Usuário -->
     <div class="form-group">

@@ -37,6 +37,7 @@ button:hover {
   max-width: 400px;
   margin: 50px auto;
   padding: 20px;
+  margin-top: 180px;
   border: 1px solid #ccc;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -86,4 +87,54 @@ button:disabled {
   color: red;
   margin-top: 15px;
   font-weight: bold;
+}
+.breadcrumbs {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 10px;
+  position: absolute;
+  top: 150px;
+  left: 10px;
+  z-index: 1000;
+}
+
+.breadcrumb-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  width: 180px;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  border-left: 1px solid #0602f3;
+  border-right: none;
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+  box-sizing: border-box;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-left: none;
+  transition: background-color 0.2s ease;
+}
+
+.home-icon-link {
+  border-right: 1px solid #0602f3;
+  background-color: #007bff;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-left: none;
+  width: 60px;
+}
+
+.breadcrumb-link:hover {
+  background-color: #0056b3;
+  cursor: pointer;
+}
+
+mat-icon {
+  font-size: 20px;
 }

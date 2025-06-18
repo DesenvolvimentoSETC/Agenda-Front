@@ -3,13 +3,14 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common'; 
 import { AuthService } from '../../auth/auth.service'; 
 import { Router } from '@angular/router'; 
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-login', 
   templateUrl: './login.component.html', 
   styleUrls: ['./login.component.css'], 
   standalone: true, 
-  imports: [FormsModule, CommonModule] 
+  imports: [FormsModule, CommonModule, MatIconModule,] 
 })
 export class LoginComponent {
   username: string = '';
@@ -17,6 +18,21 @@ export class LoginComponent {
   loginError: string | null = null; 
 
   constructor(private authService: AuthService, private router: Router) { } 
+
+   navigateToHomeInfo(): void {
+    window.open('https://transparencia.se.gov.br/comum/informacoes.html', '_blank');
+  }
+
+  navigateToOrganizationalStructure(): void {
+    window.open('https://transparencia.se.gov.br/EstruturaOrganizacional/EstruturaOrganizacional.xhtml', '_blank');
+  }
+
+  redirectToExternalAgenda(): void {
+    window.open('https://transparencia.se.gov.br/EstruturaOrganizacional/AgendaGovernador.xhtml?faces-redirect=true', '_blank');
+  }
+  navigateToAgenda(): void {
+    window.open('http://localhost:4200');
+  }
 
   onLogin(): void {
     this.loginError = null; 
@@ -28,7 +44,7 @@ export class LoginComponent {
           console.log('Login bem-sucedido no componente!');
           this.router.navigate(['/admin']);
         } else {
-          this.loginError = 'Falha no login. Verifique o console para mais detalhes.';
+          this.loginError = 'Falha no login. Verifique suas credenciais ou a rede.';
         }
       },
       error: (err) => {

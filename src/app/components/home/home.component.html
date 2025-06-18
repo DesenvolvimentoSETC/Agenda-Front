@@ -1,7 +1,19 @@
+
 <div class="container">
   <main class="content">
+    <ul class="breadcrumbs">
+      <li>
+        <a (click)="navigateToHomeInfo()" class="breadcrumb-link home-icon-link">
+          <mat-icon>home</mat-icon>
+        </a>
+      </li>
+      <li>
+        <a (click)="navigateToOrganizationalStructure()" class="breadcrumb-link">
+          Estrutura Organizacional
+        </a>
+      </li>
+    </ul>
     <h1>AGENDA DO GOVERNADOR</h1>
-
     <button (click)="irParaCadastro()" class="admin-button">
        <mat-icon>admin_panel_settings</mat-icon> Área do Administrador
     </button>
@@ -18,7 +30,6 @@
       <strong>({{ dataSelecionada | date: 'fullDate':'':'pt-BR' }})</strong>
     </p>
 
-    <!-- Exibição de Evento na Data Selecionada - Mantido -->
     <p *ngIf="mostrarAviso" class="aviso">
       <strong>Não há eventos para a data selecionada.</strong>
     </p>
@@ -32,34 +43,109 @@
     </p>
 
     <hr class="separator" /> 
+    
+    <!--
+    <button (click)="redirectToExternalAgenda()" class="anterior-button">
+      <mat-icon>file_open</mat-icon>Histórico de Datas
+    </button>
+     -->
 
   </main>
 </div>
 <style>
-.admin-button {
-  background-color: #007bff; /* Azul */
+.anterior-button {
+  background-color: #007bff; 
   color: white;
   padding: 10px 18px;
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
   cursor: pointer;
   font-size: 0.95em;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: background-color 0.3s ease, transform 0.2s ease;
-  position: absolute; /* POSICIONAMENTO ABSOLUTO */
-  top: 20px; /* Distância do topo do content */
-  right: 20px; /* Distância da direita do content */
-  z-index: 10; /* Garante que fique acima de outros elementos se houver sobreposição */
+  position: static;
+  margin: 20px auto 25px auto; 
+  width: fit-content; 
+  max-width: 100%; 
+}  
+.admin-button {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.95em;
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  position: absolute; 
+  top: 150px;
+  right: 20px; 
+  z-index: 10;
 }
 
 .admin-button:hover {
-  background-color: #0056b3; /* Azul mais escuro no hover */
+  background-color: #0056b3; 
   transform: translateY(-2px);
 }
 
 .admin-button mat-icon {
-  margin-right: 20px; /* Espaço entre ícone e texto */
+  margin-right: 20px; 
+}
+
+/* Breadcrumbs estilo anterior */
+.breadcrumbs {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 10px;
+  position: absolute;
+  top: 150px;
+  left: 10px;
+  z-index: 1000;
+}
+
+.breadcrumb-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  width: 180px;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  border-left: 1px solid #0602f3;
+  border-right: none;
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+  box-sizing: border-box;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-left: none;
+  transition: background-color 0.2s ease;
+}
+
+.home-icon-link {
+  border-right: 1px solid #0602f3;
+  background-color: #007bff;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-left: none;
+  width: 60px;
+}
+
+.breadcrumb-link:hover {
+  background-color: #0056b3;
+  cursor: pointer;
+}
+
+mat-icon {
+  font-size: 20px;
 }
 </style>

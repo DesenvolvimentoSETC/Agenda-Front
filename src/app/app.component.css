@@ -1,0 +1,32 @@
+/* Estilos para o cabeçalho global (app.component.html) */
+.site-header {
+  display: flex;
+  justify-content: space-between; /* Espaça os elementos (banner e botões) */
+  align-items: center; /* Alinha verticalmente */
+  background-color: #001c58; /* Azul escuro do cabeçalho */
+  padding: 10px 20px;
+  min-height: 80px; /* Reduzindo a altura mínima se 100px era muito */
+  position: relative; /* Para posicionar elementos internos de forma absoluta */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.header-left,
+.header-center,
+.header-right {
+  display: flex;
+  align-items: center;
+}
+.site-header {
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center; 
+    min-height: auto;
+    padding-bottom: 20px;
+  }
+
+.header-banner {
+  height: 80px; /* Altura da imagem */
+  max-width: 300px; /* Largura máxima para a imagem */
+  width: auto; /* Permite que a largura se ajuste com base na altura e max-width */
+  object-fit: contain; /* Garante que a imagem se ajuste dentro das dimensões sem cortar */
+}
