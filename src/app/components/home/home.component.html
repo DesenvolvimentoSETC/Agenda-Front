@@ -9,13 +9,13 @@
       </li>
       <li>
         <a (click)="navigateToOrganizationalStructure()" class="breadcrumb-link">
-          Estrutura Organizacional
+           Estrutura Organizacional
         </a>
       </li>
     </ul>
     <h1>AGENDA DO GOVERNADOR</h1>
     <button (click)="irParaCadastro()" class="admin-button">
-       <mat-icon>admin_panel_settings</mat-icon> Área do Administrador
+       <mat-icon>admin_panel_settings</mat-icon>Área do Administrador
     </button>
 
     <mat-card class="calendar-card">
@@ -68,12 +68,12 @@
   position: static;
   margin: 20px auto 25px auto; 
   width: fit-content; 
-  max-width: 100%; 
+  max-width: 100%;
 }  
 .admin-button {
   background-color: #007bff;
   color: white;
-  padding: 10px 18px;
+  padding: 10px 15px;
   border: none;
   border-radius: 6px;
   cursor: pointer;
@@ -86,6 +86,8 @@
   top: 150px;
   right: 20px; 
   z-index: 10;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
 }
 
 .admin-button:hover {
@@ -97,7 +99,6 @@
   margin-right: 20px; 
 }
 
-/* Breadcrumbs estilo anterior */
 .breadcrumbs {
   display: flex;
   list-style: none;
@@ -111,41 +112,52 @@
 }
 
 .breadcrumb-link {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 40px;
-  width: 180px;
-  background-color: #007bff;
-  color: white;
-  text-decoration: none;
-  font-size: 14px;
-  border-left: 1px solid #0602f3;
-  border-right: none;
-  border-bottom-right-radius: 10px;
-  border-top-right-radius: 10px;
-  box-sizing: border-box;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
-  border-left: none;
-  transition: background-color 0.2s ease;
+    background-color: #007bff;
+    color: white;
+    height: 40px;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    text-decoration: none;
+    clip-path: polygon(0% 0%, 8% 50%, 0% 100%, 100% 100%, 100% 0%);
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    margin-left: -20px; 
+    z-index: 1;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
 }
 
 .home-icon-link {
-  border-right: 1px solid #0602f3;
   background-color: #007bff;
+  color: white;
+  width: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  clip-path: polygon(0 0, 78% 0, 100% 50%, 78% 100%, 0 100%);
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
-  border-left: none;
-  width: 60px;
+  margin-left: 10px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400; 
 }
 
 .breadcrumb-link:hover {
   background-color: #0056b3;
   cursor: pointer;
+  transform: translateY(-2px);
 }
 
 mat-icon {
   font-size: 20px;
 }
+
 </style>

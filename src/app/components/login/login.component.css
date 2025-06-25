@@ -105,7 +105,7 @@ button:disabled {
   align-items: center;
   justify-content: center;
   height: 40px;
-  width: 180px;
+  width: 100px;
   background-color: #007bff;
   color: white;
   text-decoration: none;
@@ -119,6 +119,35 @@ button:disabled {
   border-bottom-left-radius: 10px;
   border-left: none;
   transition: background-color 0.2s ease;
+  clip-path: polygon(0% 0%, 22% 50%, 0% 100%, 100% 100%, 100% 0%);
+  margin-left: -20px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+}
+
+.breadcrumb-link-estrutura {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  width: 220px;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  border-left: 1px solid #0602f3;
+  border-right: none;
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+  box-sizing: border-box;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-left: none;
+  transition: background-color 0.2s ease;
+  clip-path: polygon(0 0, 10% 50%, 0% 100%,  90% 100%, 100% 50%, 90% 0%);
+  margin-left: -18px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
 }
 
 .home-icon-link {
@@ -128,9 +157,16 @@ button:disabled {
   border-bottom-left-radius: 10px;
   border-left: none;
   width: 60px;
+  clip-path: polygon(0 0, 70% 0, 100% 50%, 70% 100%, 0 100%);
+  margin-left: 10px;
 }
 
 .breadcrumb-link:hover {
+  background-color: #0056b3;
+  cursor: pointer;
+}
+
+.breadcrumb-link-estrutura:hover {
   background-color: #0056b3;
   cursor: pointer;
 }

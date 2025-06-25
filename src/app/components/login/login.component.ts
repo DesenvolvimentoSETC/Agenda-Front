@@ -19,16 +19,16 @@ export class LoginComponent {
 
   constructor(private authService: AuthService, private router: Router) { } 
 
-   navigateToHomeInfo(): void {
-    window.open('https://transparencia.se.gov.br/comum/informacoes.html', '_blank');
+  navigateToHomeInfo(): void {
+    window.open('https://transparencia.se.gov.br/comum/informacoes.html');
   }
 
   navigateToOrganizationalStructure(): void {
-    window.open('https://transparencia.se.gov.br/EstruturaOrganizacional/EstruturaOrganizacional.xhtml', '_blank');
+    window.open('https://transparencia.se.gov.br/EstruturaOrganizacional/EstruturaOrganizacional.xhtml');
   }
 
   redirectToExternalAgenda(): void {
-    window.open('https://transparencia.se.gov.br/EstruturaOrganizacional/AgendaGovernador.xhtml?faces-redirect=true', '_blank');
+    window.open('https://transparencia.se.gov.br/EstruturaOrganizacional/AgendaGovernador.xhtml?faces-redirect=true');
   }
   navigateToAgenda(): void {
     window.open('http://localhost:4200');
