@@ -56,7 +56,7 @@ button:hover {
 }
 
 .form-group input {
-  width: calc(100% - 20px); /* Ajusta a largura para padding */
+  width: calc(100% - 20px); 
   padding: 10px;
   border: 1px solid #ddd;
   border-radius: 4px;
@@ -120,7 +120,7 @@ button:disabled {
   border-left: none;
   transition: background-color 0.2s ease;
   clip-path: polygon(0% 0%, 22% 50%, 0% 100%, 100% 100%, 100% 0%);
-  margin-left: -20px;
+  margin-left: -25px;
   font-family: 'Roboto', sans-serif;
   font-weight: 500;
 }
@@ -145,30 +145,35 @@ button:disabled {
   border-left: none;
   transition: background-color 0.2s ease;
   clip-path: polygon(0 0, 10% 50%, 0% 100%,  90% 100%, 100% 50%, 90% 0%);
-  margin-left: -18px;
+  margin-left: -25px;
   font-family: 'Roboto', sans-serif;
   font-weight: 500;
 }
 
 .home-icon-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-right: 1px solid #0602f3;
   background-color: #007bff;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
   border-left: none;
-  width: 60px;
-  clip-path: polygon(0 0, 70% 0, 100% 50%, 70% 100%, 0 100%);
+  width: 70px;
+  clip-path: polygon(0 0, 68% 0, 100% 50%, 68% 100%, 0 100%);
   margin-left: 10px;
 }
 
 .breadcrumb-link:hover {
   background-color: #0056b3;
   cursor: pointer;
+  transform: translateY(-2px);
 }
 
 .breadcrumb-link-estrutura:hover {
   background-color: #0056b3;
   cursor: pointer;
+  transform: translateY(-2px);
 }
 
 mat-icon {
