@@ -37,7 +37,7 @@ export class LoginComponent {
   onLogin(): void {
     this.loginError = null; 
 
-    // Chame o método login do AuthService
+    // Chama o método login do AuthService
     this.authService.login(this.username, this.password).subscribe({
       next: (success) => {
         if (success) {

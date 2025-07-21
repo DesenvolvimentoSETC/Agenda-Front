@@ -18,7 +18,6 @@
       </li>
     </ul>
   <form (ngSubmit)="onLogin()" #loginForm="ngForm">
-    <!-- Campo Usuário -->
     <div class="form-group">
       <label for="username">Usuário: </label>
       <input
@@ -34,7 +33,7 @@
       </div>
     </div>
 
-    <!-- Campo Senha -->
+   
     <div class="form-group">
       <label for="password">Senha: </label>
       <input
@@ -50,10 +49,10 @@
       </div>
     </div>
 
-    <!-- Botão Entrar -->
+    
     <button type="submit" [disabled]="!loginForm.valid">Entrar</button>
 
-    <!-- Mensagem de erro do login (se houver) -->
+   
     <div *ngIf="loginError" class="login-error-message">
       {{ loginError }}
     </div>

@@ -1,33 +1,33 @@
-import { Component, OnInit } from '@angular/core'; // Importe OnInit
-import { CommonModule } from '@angular/common'; // Para *ngIf, *ngFor
-import { FormsModule } from '@angular/forms'; // Para [(ngModel)]
-import { AgendaService } from '../../services/agenda.service'; // Ajuste o caminho para o seu AgendaService
-import { AgendaDTO } from '../../agendas/DTO/AgendaDTO'; // IMPORTANTE: Importe a interface AgendaDTO
+import { Component, OnInit } from '@angular/core'; 
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { AgendaService } from '../../services/agenda.service'; 
+import { AgendaDTO } from '../../agendas/DTO/AgendaDTO'; 
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin',
   standalone: true,
-  imports: [CommonModule, FormsModule], // Adicione FormsModule aqui
+  imports: [CommonModule, FormsModule], 
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.css']
 })
-export class AdminComponent implements OnInit { // Implemente OnInit
+export class AdminComponent implements OnInit { 
   // Campos do formulário para o novo evento
-  data: string = ''; // Correspondendo a data "YYYY-MM-DD"
+  data: string = ''; 
   descricao: string = '';
   hora: string = '';
   local: string = ''; 
 
-  mensagem: string = ''; // Mensagens de feedback para o usuário
+  mensagem: string = ''; 
 
   // Lista para armazenar todos os eventos (AgendaDTOs)
-  agendas: AgendaDTO[] = []; // O tipo da lista agora é AgendaDTO[]
+  agendas: AgendaDTO[] = []; 
 
   constructor(private agendaService: AgendaService, private router: Router) { }
 
   ngOnInit(): void {
-    // Carrega todos os eventos ao inicializar o componente
+   
     this.getAllAgendas();
   }
 
@@ -40,15 +40,12 @@ export class AdminComponent implements OnInit { // Implemente OnInit
     });
   }
 
-  irParaHome(): void { // Novo método para navegação
-    this.router.navigate(['/home']); // Redireciona para a rota '/home'
+  irParaHome(): void { 
+    this.router.navigate(['/home']); 
   }
 
-  /**
-   * Lida com a submissão do formulário para criar ou atualizar um evento.
-   */
+  
   onSubmit(): void {
-    // Cria um objeto AgendaDTO com os dados do formulário
     const novoEvento: AgendaDTO = {
       data: this.data,
       descricao: this.descricao,
