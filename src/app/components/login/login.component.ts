@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms'; 
-import { CommonModule } from '@angular/common'; 
-import { AuthService } from '../../auth/auth.service'; 
-import { Router } from '@angular/router'; 
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { AuthService } from '../../auth/auth.service';
+import { Router } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-login', 
@@ -31,7 +32,7 @@ export class LoginComponent {
     window.open('https://transparencia.se.gov.br/EstruturaOrganizacional/AgendaGovernador.xhtml?faces-redirect=true');
   }
   navigateToAgenda(): void {
-    window.open('http://localhost:4200');
+    window.open(environment.frontendUrl);
   }
 
   onLogin(): void {

@@ -3,12 +3,13 @@ import { HttpClient } from '@angular/common/http'; // Importar HttpClient para f
 import { Observable, BehaviorSubject, of } from 'rxjs'; // Para reatividade e gerenciamento de estado
 import { tap, catchError, map } from 'rxjs/operators'; // Operadores RxJS
 import { Router } from '@angular/router'; // Para redirecionamento (assumindo que você usa o Angular Router)
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private readonly API_AUTH_URL = 'http://localhost:9090/auth';
+  private readonly API_AUTH_URL = `${environment.apiUrl}/auth`;
 
   // Chave para armazenar o token JWT no localStorage
   private readonly TOKEN_KEY = 'jwt_token';

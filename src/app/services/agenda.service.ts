@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { AgendaDTO } from '../agendas/DTO/AgendaDTO'; 
+import { AgendaDTO } from '../agendas/DTO/AgendaDTO';
+import { environment } from '../../environments/environment';
 
 
 @Injectable({
@@ -9,7 +10,7 @@ import { AgendaDTO } from '../agendas/DTO/AgendaDTO';
 })
 export class AgendaService {
   // URL base do endpoint de agendas na sua API Spring Boot
-  private readonly API_AGENDA_URL = 'http://172.22.21.17:9090/agendas';
+  private readonly API_AGENDA_URL = `${environment.apiUrl}/agendas`;
 
   constructor(private http: HttpClient) { }
 
