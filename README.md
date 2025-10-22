@@ -54,6 +54,50 @@ ng e2e
 
 Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
 
+## GitHub Pages Deployment
+
+Este projeto está configurado para deploy no GitHub Pages. Para fazer o deploy:
+
+### Opção 1: Script Automático (Recomendado)
+
+**Windows:**
+```bash
+deploy-gh-pages.bat
+```
+
+**Linux/Mac:**
+```bash
+./deploy-gh-pages.sh
+```
+
+### Opção 2: Manual
+
+1. Execute o build para GitHub Pages:
+```bash
+npm run build:gh-pages
+```
+
+2. Se os arquivos estiverem em `docs/browser/`, copie-os para `docs/`:
+```bash
+cp -r docs/browser/* docs/
+```
+
+3. Verifique se o `base href` está correto em `docs/index.html`:
+```html
+<base href="/Agenda-Front/">
+```
+
+4. Faça commit e push:
+```bash
+git add docs/
+git commit -m "Deploy: atualização do GitHub Pages"
+git push origin main
+```
+
+### Site Online
+
+O site está disponível em: [https://desenvolvimentosetc.github.io/Agenda-Front/](https://desenvolvimentosetc.github.io/Agenda-Front/)
+
 ## Additional Resources
 
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.

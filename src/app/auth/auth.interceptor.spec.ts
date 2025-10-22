@@ -19,6 +19,7 @@ export class AuthInterceptor implements HttpInterceptor {
 
     // Clona a requisição e adiciona o cabeçalho Authorization se um token existir
     if (token && !request.url.includes('/auth/login')) {
+
       // Requisições são imutáveis em Angular, então precisamos cloná-las para modificá-las
       const authRequest = request.clone({
         setHeaders: {
