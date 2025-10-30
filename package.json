@@ -6,6 +6,7 @@
     "start": "ng serve",
     "build": "ng build",
     "build:gh-pages": "ng build --configuration production --output-path docs --base-href /Agenda-Front/",
+    "build:nginx": "ng build --configuration production --output-path dist --base-href /",
     "build:test": "ng build --configuration test --output-path docs --base-href /Agenda-Front/",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
