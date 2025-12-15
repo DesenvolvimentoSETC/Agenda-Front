@@ -1,101 +1,99 @@
-# AppAgendaGovernador
+# Agenda do Governador
 
-This project using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.9.
+Sistema de agenda desenvolvido em Angular 19 para gerenciamento de eventos do governador.
 
-## Development server
+## Pré-requisitos
 
-To start a local development server, run:
+- Node.js (versão 18 ou superior)
+- Angular CLI 19.2.9
+- API Spring Boot rodando em `http://172.22.21.17:9090`
+
+## Instalação
+
+1. Clone o repositório:
+```bash
+git clone https://github.com/DesenvolvimentoSETC/Agenda-Front.git
+cd Agenda-Front
+```
+
+2. Instale as dependências:
+```bash
+npm install
+```
+
+## Desenvolvimento
+
+Para iniciar o servidor local de desenvolvimento:
 
 ```bash
 ng serve
 ```
 
-## Code scaffolding
+O aplicativo estará disponível em `http://localhost:4200/`.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Build
 
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
+Para gerar os arquivos de produção:
 
 ```bash
 ng build
+# ou
+npm run build:prod
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Os arquivos serão gerados na pasta `dist/`.
 
-## Running unit tests
+## Configuração
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+### API Backend
+O projeto está configurado para se conectar com a API Spring Boot em:
+- **URL da API:** `http://172.22.21.17:9090`
+
+### Funcionalidades
+- **Login de administrador**
+- **Visualização pública da agenda**
+- **Gerenciamento de eventos** (CRUD)
+- **Autenticação JWT**
+
+## Uso
+
+1. **Acesse a aplicação:** `http://localhost:4200`
+2. **Página inicial:** Visualização pública dos eventos
+3. **Login:** Acesse `/login` para área administrativa
+4. **Administração:** Após login, gerencie eventos em `/admin`
+
+## Testes
+
+Para executar os testes unitários:
 
 ```bash
 ng test
 ```
 
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
+Para executar os testes end-to-end:
 
 ```bash
 ng e2e
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## Estrutura do Projeto
 
-## GitHub Pages Deployment
-
-Este projeto está configurado para deploy no GitHub Pages. Para fazer o deploy:
-
-### Opção 1: Script Automático (Recomendado)
-
-**Windows:**
-```bash
-deploy-gh-pages.bat
+```
+src/
+├── app/
+│   ├── components/
+│   │   ├── home/          # Página inicial pública
+│   │   ├── login/         # Página de login
+│   │   └── admin/         # Área administrativa
+│   ├── auth/              # Serviços de autenticação
+│   ├── services/          # Serviços da aplicação
+│   └── environments/      # Configurações de ambiente
 ```
 
-**Linux/Mac:**
-```bash
-./deploy-gh-pages.sh
-```
+## Tecnologias Utilizadas
 
-### Opção 2: Manual
-
-1. Execute o build para GitHub Pages:
-```bash
-npm run build:gh-pages
-```
-
-2. Se os arquivos estiverem em `docs/browser/`, copie-os para `docs/`:
-```bash
-cp -r docs/browser/* docs/
-```
-
-3. Verifique se o `base href` está correto em `docs/index.html`:
-```html
-<base href="/Agenda-Front/">
-```
-
-4. Faça commit e push:
-```bash
-git add docs/
-git commit -m "Deploy: atualização do GitHub Pages"
-git push origin main
-```
-
-### Site Online
-
-O site está disponível em: [https://desenvolvimentosetc.github.io/Agenda-Front/](https://desenvolvimentosetc.github.io/Agenda-Front/)
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- **Angular 19** - Framework principal
+- **Angular Material** - Componentes UI
+- **RxJS** - Programação reativa
+- **JWT** - Autenticação
+- **TypeScript** - Linguagem de programação
