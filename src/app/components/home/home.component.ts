@@ -32,9 +32,15 @@ export class HomeComponent implements OnInit {
   mostrarAviso = false;
   descricao = '';
   hora = '';
-  Local = ''; 
+  Local = '';
   
-  agendas: AgendaDTO[] = []; 
+  agendas: AgendaDTO[] = [];
+
+  /** Eventos da data selecionada para exibição na lista lateral */
+  get eventosDaData(): AgendaDTO[] {
+    const selectedDateString = this.dataSelecionada.toISOString().split('T')[0];
+    return this.agendas.filter(agenda => agenda.data === selectedDateString);
+  } 
 
   constructor(private router: Router, private agendaService: AgendaService, private authService: AuthService) {}
 
@@ -80,27 +86,20 @@ export class HomeComponent implements OnInit {
   }
 
   verificarEvento(data: Date) {
-    this.dataSelecionada = data; 
-
+    this.dataSelecionada = data;
     const selectedDateString = data.toISOString().split('T')[0];
-
-    const eventoEncontrado = this.agendas.find(agenda => {
-      // Compara a string de data do evento com a string de data selecionada
-      return agenda.data === selectedDateString;
-    });
-
-    if (eventoEncontrado) {
-      this.descricao = eventoEncontrado.descricao;
-      this.hora = eventoEncontrado.hora;
-      this.Local = eventoEncontrado.local;
-      this.mostrarAviso = false;
+    const eventos = this.agendas.filter(agenda => agenda.data === selectedDateString);
+    this.mostrarAviso = eventos.length === 0;
+    // Mantém compatibilidade: primeiro evento preenche descricao, hora, Local
+    if (eventos.length > 0) {
+      this.descricao = eventos[0].descricao;
+      this.hora = eventos[0].hora;
+      this.Local = eventos[0].local;
     } else {
       this.descricao = '';
       this.hora = '';
       this.Local = '';
-      this.mostrarAviso = true;
     }
-
     setTimeout(() => {
       this.dataInterna = null;
     });
