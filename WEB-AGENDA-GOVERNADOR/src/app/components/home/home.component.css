@@ -1,0 +1,298 @@
+::ng-deep .container {
+  min-height: 100vh;
+  padding: 20px;
+}
+
+::ng-deep .content {
+  padding: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Título principal centralizado */
+.page-title-wrapper {
+  width: 100%;
+  text-align: center;
+  margin-top: 60px;
+  margin-bottom: 24px;
+}
+
+.page-title-wrapper h1 {
+  margin: 0;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  letter-spacing: 0.02em;
+}
+
+/* Layout duas colunas: calendário à esquerda, lista de eventos à direita */
+.main-layout {
+  display: grid;
+  grid-template-columns: minmax(320px, auto) 1fr;
+  gap: 24px;
+  align-items: start;
+  margin-top: 48px;
+}
+
+.calendar-column {
+  position: sticky;
+  top: 24px;
+}
+
+.events-column {
+  display: flex;
+  flex-direction: column;
+  min-height: 400px;
+  max-height: calc(100vh - 180px);
+}
+
+.events-header {
+  flex-shrink: 0;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #2693ec;
+  text-align: center;
+}
+
+.events-header h2 {
+  margin: 0 0 4px 0;
+  font-size: 1.25rem;
+  color: #333;
+  font-weight: 600;
+}
+
+.data-selecionada {
+  margin: 0;
+  font-size: 1rem;
+  color: #2693ec;
+  font-weight: 600;
+}
+
+.ordenacao-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin: 8px 0 0 0;
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.ordenacao-info mat-icon {
+  font-size: 18px;
+  width: 18px;
+  height: 18px;
+}
+
+.evento-hora-valor {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Área rolável da lista de eventos */
+.events-list-scroll {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 8px;
+}
+
+.events-list-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+
+.events-list-scroll::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.events-list-scroll::-webkit-scrollbar-thumb {
+  background: #2693ec;
+  border-radius: 4px;
+}
+
+.events-list-scroll::-webkit-scrollbar-thumb:hover {
+  background: #1a7bc7;
+}
+
+/* Card de evento */
+.evento-card {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  transition: box-shadow 0.2s ease;
+}
+
+.evento-card:hover {
+  box-shadow: 0 4px 12px rgba(38, 147, 236, 0.15);
+}
+
+.evento-hora {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #2693ec;
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-bottom: 8px;
+}
+
+.evento-hora mat-icon {
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+}
+
+.evento-descricao {
+  margin: 0 0 12px 0;
+  font-size: 1rem;
+  line-height: 1.4;
+  color: #222;
+  font-weight: 500;
+}
+
+.evento-local {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  color: #555;
+  font-size: 0.9rem;
+}
+
+.evento-local mat-icon {
+  font-size: 18px;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+/* Card de aviso (sem eventos) */
+.aviso-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 24px;
+  background: #f8fafc;
+  border: 1px dashed #2693ec;
+  border-radius: 12px;
+  color: #2693ec;
+}
+
+.aviso-icon {
+  font-size: 48px;
+  width: 48px;
+  height: 48px;
+  margin-bottom: 12px;
+  opacity: 0.8;
+}
+
+.aviso-text {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+@media (max-width: 900px) {
+  .main-layout {
+    grid-template-columns: 1fr;
+    margin-top: 100px;
+  }
+
+  .calendar-column {
+    position: static;
+  }
+
+  .events-column {
+    max-height: none;
+  }
+}
+
+::ng-deep .calendar-card {
+  display: inline-block;
+  margin: 20px 0;
+  padding: 10px;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+::ng-deep .mat-calendar {
+  font-family: 'Segoe UI', Arial;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+::ng-deep .mat-calendar-header {
+  background-color: #2693ec;
+  color: white;
+  font-weight: bold;
+}
+
+::ng-deep .mat-calendar-table-header th {
+  font-weight: bold;
+  color: black;
+}
+
+::ng-deep .mat-calendar-table-header th:first-child,
+::ng-deep .mat-calendar-table-header th:last-child {
+  color: red;
+}
+
+::ng-deep .fim-de-semana .mat-calendar-body-cell-content {
+  color: rgb(250, 1, 1) !important;
+  background-color: rgb(255, 255, 255);
+  border-radius: 50%;
+}
+
+::ng-deep .mat-calendar-body-cell:first-child .mat-calendar-body-cell-content,
+::ng-deep .mat-calendar-body-cell:last-child .mat-calendar-body-cell-content {
+  color: rgb(0, 0, 0) ;
+}
+
+::ng-deep .mat-calendar-body-selected {
+  background-color: #2693ec !important;
+  color: white !important;
+}
+
+::ng-deep .mat-calendar-body-cell-content:hover {
+  background-color: #c5cae9;
+  border-radius: 50%;
+}
+
+::ng-deep .mat-calendar-body-cell-content {
+  font-weight: bold;
+  padding: 8px;
+}
+
+  
+  ::ng-deep .date {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+  }
+  
+  ::ng-deep .event-info p {
+    margin: 5px 0;
+  }
+  ::ng-deep .aviso {
+    background-color: #fcfcfc; 
+    color: #2693ec; 
+    padding: 15px; 
+    border-radius: 5px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    font-size: 16px; 
+    font-weight: bold; 
+    text-align: center; 
+    margin-top: 20px; 
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+  
+  ::ng-deep .aviso::before {
+    content: "⚠️";
+    font-size: 20px;
+  }
+
+  
+  

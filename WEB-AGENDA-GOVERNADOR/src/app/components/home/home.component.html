@@ -1,0 +1,177 @@
+
+<div class="container">
+  <main class="content">
+    <ul class="breadcrumbs">
+      <li>
+        <a (click)="navigateToHomeInfo()" class="breadcrumb-link home-icon-link">
+          <mat-icon>home</mat-icon>
+        </a>
+      </li>
+      <li>
+        <a (click)="navigateToOrganizationalStructure()" class="breadcrumb-link">
+           Estrutura Organizacional
+        </a>
+      </li>
+    </ul>
+    <div class="page-title-wrapper">
+      <h1>AGENDA DO GOVERNADOR</h1>
+    </div>
+    <button (click)="irParaCadastro()" class="admin-button">
+       <mat-icon>admin_panel_settings</mat-icon>Área do Administrador
+    </button>
+
+    <div class="main-layout">
+      <!-- Coluna esquerda: calendário fixo -->
+      <aside class="calendar-column">
+        <mat-card class="calendar-card">
+          <mat-calendar
+            [(selected)]="dataSelecionada"
+            (selectedChange)="verificarEvento($event!)"
+            [dateClass]="marcarFinaisDeSemana"
+          ></mat-calendar>
+        </mat-card>
+      </aside>
+
+      <!-- lista de eventos rolável -->
+      <section class="events-column">
+        <div class="events-header">
+          <h2>Eventos do dia</h2>
+          <p class="data-selecionada">{{ dataSelecionada | date: 'fullDate':'':'pt-BR' }}</p>
+          <p *ngIf="!mostrarAviso && eventosDaData.length > 0" class="ordenacao-info">
+            <mat-icon>schedule</mat-icon> Ordenado por horário
+          </p>
+        </div>
+        <div class="events-list-scroll">
+          <ng-container *ngIf="mostrarAviso">
+            <div class="aviso-card">
+              <mat-icon class="aviso-icon">event_busy</mat-icon>
+              <p class="aviso-text">Não há eventos para a data selecionada.</p>
+            </div>
+          </ng-container>
+          <ng-container *ngIf="!mostrarAviso">
+            <div *ngFor="let evento of eventosDaData" class="evento-card">
+              <div class="evento-hora" title="Horário">
+                <mat-icon>schedule</mat-icon>
+                <span class="evento-hora-valor">{{ evento.hora }}</span>
+              </div>
+              <h3 class="evento-descricao">{{ evento.descricao }}</h3>
+              <div class="evento-local">
+                <mat-icon>place</mat-icon>
+                <span>{{ evento.local }}</span>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+      </section>
+    </div>
+  </main>
+</div>
+<style>
+.anterior-button {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.95em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  position: static;
+  margin: 20px auto 25px auto;
+  width: fit-content;
+  max-width: 100%;
+}
+.admin-button {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.95em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  position: absolute;
+  top: 150px;
+  right: 20px;
+  z-index: 10;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+}
+
+.admin-button:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+.admin-button mat-icon {
+  margin-right: 20px;
+}
+
+.breadcrumbs {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 10px;
+  position: absolute;
+  top: 150px;
+  left: 10px;
+  z-index: 1000;
+}
+
+.breadcrumb-link {
+    background-color: #007bff;
+    color: white;
+    height: 40px;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    text-decoration: none;
+    clip-path: polygon(0% 0%, 8% 50%, 0% 100%, 100% 100%, 100% 0%);
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    margin-left: -20px;
+    z-index: 1;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+}
+
+.home-icon-link {
+  background-color: #007bff;
+  color: white;
+  width: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  clip-path: polygon(0 0, 78% 0, 100% 50%, 78% 100%, 0 100%);
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  margin-left: 10px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+}
+
+.breadcrumb-link:hover {
+  background-color: #0056b3;
+  cursor: pointer;
+  transform: translateY(-2px);
+}
+
+mat-icon {
+  font-size: 20px;
+}
+
+</style>

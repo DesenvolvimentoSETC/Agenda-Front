@@ -1,0 +1,62 @@
+<div class="login-container">
+  <h2>Área Administrativa</h2>
+      <ul class="breadcrumbs">
+      <li>
+        <a (click)="navigateToHomeInfo()" class="breadcrumb-link home-icon-link">
+          <mat-icon>home</mat-icon>
+        </a>
+      </li>
+      <li>
+        <a (click)="navigateToOrganizationalStructure()" class="breadcrumb-link-estrutura">
+          Estrutura Organizacional
+        </a>
+      </li>
+      <li>
+        <a (click)="navigateToAgenda()" class="breadcrumb-link">
+          Agenda
+        </a>
+      </li>
+    </ul>
+  <form (ngSubmit)="onLogin()" #loginForm="ngForm">
+    <div class="form-group">
+      <label for="username">Usuário: </label>
+      <input
+        type="text"
+        id="username"
+        name="username"
+        [(ngModel)]="username"
+        required
+        #usernameField="ngModel"
+      />
+      <div *ngIf="usernameField.invalid && usernameField.touched" class="error-message">
+        Usuário é obrigatório.
+      </div>
+    </div>
+
+   
+    <div class="form-group">
+      <label for="password">Senha: </label>
+      <input
+        type="password"
+        id="password"
+        name="password"
+        [(ngModel)]="password"
+        required
+        #passwordField="ngModel"
+      />
+      <div *ngIf="passwordField.invalid && passwordField.touched" class="error-message">
+        Senha é obrigatória.
+      </div>
+    </div>
+
+    
+    <button type="submit" [disabled]="!loginForm.valid">Entrar</button>
+
+   
+    <div *ngIf="loginError" class="login-error-message">
+      {{ loginError }}
+    </div>
+  </form>
+</div>
+
+
